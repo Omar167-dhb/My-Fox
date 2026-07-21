@@ -39,7 +39,8 @@ void intializing_textures()
 	Shift_texture[0].loadFromFile("MAIN/My-Fox/GUI/Kb_buttons_Shift_2.png");
 	E_texture[1].loadFromFile("MAIN/My-Fox/GUI/Kb_button_E_2.png");
 	Esc_texture[1].loadFromFile("MAIN/My-Fox/GUI/Kb_buttons_Esc_2.png");
-	P_texture[1].loadFromFile("MAIN/My-Fox/GUI/Kb_buttons_P_2.png");
+	P_texture[0].loadFromFile("MAIN/My-Fox/GUI/Kb_buttons_P_2.png");
+	P_texture[1].loadFromFile("MAIN/My-Fox/GUI/Kb_buttons_P_1.png");
 	W_sprite.setTexture(W_texture[0]);
 	A_sprite.setTexture(A_texture[0]);
 	S_sprite.setTexture(S_texture[0]);
@@ -71,12 +72,12 @@ void intializing_textures()
 	S_sprite.setPosition(560, 470);
 	D_sprite.setPosition(590, 470);
 	Shift_sprite.setPosition(1050, 560);
-	E_sprite.setPosition(700, 550);
-	P_sprite.setPosition(500, 600);
+	E_sprite.setPosition(1590, 635);
+	P_sprite.setPosition(1350, 760);
 	Esc_sprite1.setTexture(Esc_texture[0]);
-	Esc_sprite1.setPosition(700, 600);
-	Esc_sprite1.setOrigin(Esc_sprite1.getGlobalBounds().width / 2, Esc_sprite1.getGlobalBounds().height / 2);
 	Esc_sprite1.setScale(2.0f, 2.0f);
+	Esc_sprite1.setOrigin(Esc_sprite1.getGlobalBounds().width / 2, Esc_sprite1.getGlobalBounds().height / 2);
+	Esc_sprite1.setPosition(1495, 755);
 
 }
 

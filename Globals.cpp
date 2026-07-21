@@ -44,7 +44,7 @@ Text Exit_text{"EXIT",font,50};
 // the + , - buttons in the settings menu
 std::vector<sf::Text> Inc_Dec(6);
 // How to play and credits texts
-Text credits_text[2];
+vector<Text> credits_text(2);
 vector<Text> How_to_play_texts(6);
 //boolean to check if the game is in fullscreen or not
 bool isfullscreen = true;
@@ -220,12 +220,14 @@ void draw(game_state state)
 		window.draw(D_sprite);
 		window.draw(Shift_sprite);
 		window.draw(E_sprite);
-		window.draw(Esc_sprite1);
 		window.draw(P_sprite);
+		window.draw(Esc_sprite1);
 		break;
 	case credits:
 		window.setView(main_menu_cam);
 		window.draw(secondary_background_sprite);
+		for (auto& x : credits_text)
+			window.draw(x);
 		window.draw(Esc_sprite);
 		window.draw(Exit_text);
 		break;

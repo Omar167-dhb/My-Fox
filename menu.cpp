@@ -128,6 +128,26 @@ void menu_intialization()
 	Exit_text.setOutlineColor(sf::Color::Black);
 	Exit_text.setOutlineThickness(1.5);
 	Exit_text.setPosition(120, 40);
+
+	String credits[] = {
+		"Your Loyal Slave",
+		" Omar Ahmed ",
+		
+	};
+	for (auto& x : credits_text)
+	{
+		x.setFont(font);
+		x.setCharacterSize(80);
+		x.setFillColor(sf::Color::White);
+		x.setOutlineColor(sf::Color::Black);
+		x.setOutlineThickness(2);
+		if((&x - &credits_text[0])%2 == 0)
+			x.setString(credits[0]);
+		else
+			x.setString(credits[1]);
+		x.setOrigin(x.getGlobalBounds().width / 2, x.getGlobalBounds().height / 2);
+		x.setPosition(window_w / 2,  200 + (&x - &credits_text[0]) * 200);
+	}
 }
 
 void main_menu(Event& event, sf::Vector2i mouse_pos)
