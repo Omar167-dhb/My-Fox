@@ -7,8 +7,8 @@ using namespace std;
 using namespace sf;
 
 #include "Globals.cpp"
-#include "menu.cpp"
 #include "Animation.cpp"
+#include "menu.cpp"
 #include "Textures.cpp"
 #include "gamelogic.cpp"
 
@@ -41,13 +41,37 @@ int main()
 					isfullscreen = true;
 				}
 			}
-
-			Input(event, mouse_pos);
+			switch (state)
+			{
+			case Main_menu:
+				main_menu(event, mouse_pos);
+				break;
+			case Playing:
+				game_input_once();
+				break;
+			case Paused:
+				pause_menu(event, mouse_pos);
+				break;
+			case Settings:
+				setting_menu(event, mouse_pos);
+				break;
+			case How_to_play:
+				how_to_play_menu(event);
+				break;
+			case credits:
+				credits_menu(event, mouse_pos);
+				break;
+			default:
+				break;
+			}
+			//Input(event, mouse_pos);
 
 		}
 		update();
+		window.clear();
+		draw(state);
+		window.display();
 
-		draw();
 	}
 		return 0;
 }

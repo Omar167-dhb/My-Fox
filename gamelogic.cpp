@@ -7,7 +7,7 @@ void game_input_once() {
 	}
 }
 void game_update() {
-	camera.setCenter(sf::Vector2f(Fox.getGlobalBounds().Left + Fox.getGlobalBounds().width / 2, Fox.getGlobalBounds().top + Fox.getGlobalBounds().height / 2));
+	camera.setCenter(sf::Vector2f(Fox.getGlobalBounds().left + Fox.getGlobalBounds().width / 2.0f, Fox.getGlobalBounds().top + Fox.getGlobalBounds().height / 2.0f));
 
 	Fox_hitbox.setPosition(Fox.getPosition().x + Fox.getGlobalBounds().width / 2, Fox.getPosition().y + Fox.getGlobalBounds().height / 2);
 	// Handle movement input and running. Compute a velocity vector and normalize so diagonal isn't faster.
@@ -80,7 +80,6 @@ void game_update() {
 
 		Fox.setTexture(Fox_idle);
 		animation_direction(fox_direction, Fox_idle_timer, Fox_Idle_counter, Fox, idle_framecount, idle_total_width / idle_framecount, idle_total_hight / idle_framecount, Fox_yoffset);
-
 		break;
 	case Walking:
 		Fox.setTexture(Fox_walking);
@@ -96,6 +95,28 @@ void game_update() {
 		break;
 	}
 }
+
+struct NPC
+{
+	Texture texure; Sprite sprite;
+	RectangleShape hitbox;
+	NPC(Texture &t, Sprite &s) {
+		texure = t;
+		sprite = s;
+		sprite.setTexture(texure);
+		hitbox.setSize(sf::Vector2f(sprite.getGlobalBounds().width-100, sprite.getGlobalBounds().height-100));
+	}
+	void collision()
+	{
+		if (Fox_hitbox.getGlobalBounds().intersects(hitbox.getGlobalBounds()))
+		{
+			// Handle collision response here
+			// For example, you could stop the fox from moving or push it back
+			 Fox.move(-Fox_speed * Delta_time, 0); // Example: push back to the left
+		}
+	}
+
+};
 
 void game_draw() {
 	window.setView(camera);

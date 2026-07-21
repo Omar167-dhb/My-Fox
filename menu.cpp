@@ -1,8 +1,11 @@
 void menu_intialization()
 {
-	Main_Menu_Background.loadFromFile("GUI/Main_menu_background.png");
+
+
+	Main_Menu_Background.loadFromFile("MAIN/My-Fox/GUI/Main_menu_background.png");
 	Main_Menu_Background_Sprite.setTexture(Main_Menu_Background);
-	font.loadFromFile("GUI/Cheese Milky.otf");
+	font.loadFromFile("MAIN/My-Fox/GUI/Cheese Milky.otf");
+	font1.loadFromFile("MAIN/My-Fox/GUI/ByteBounce.ttf");
 	for (auto& x : Main_Menu_texts)
 	{
 		x.setFont(font);
@@ -55,9 +58,9 @@ void menu_intialization()
 		Inc_Dec[i].setOutlineThickness(1.5);
 		Inc_Dec[i].setOrigin(Inc_Dec[i].getGlobalBounds().width / 2, Inc_Dec[i].getGlobalBounds().height / 2);
 		if (i % 2 == 0)
-			Inc_Dec[i].setPosition(1100, 200 + (i / 2) * 100);
+			Inc_Dec[i].setPosition(1000, 180 + (i / 2) * 100);
 		else
-			Inc_Dec[i].setPosition(1400, 200 + (i / 2) * 100);
+			Inc_Dec[i].setPosition(1400, 180 + (i / 2) * 100);
 	}
 	Settings_texts[0].setString("Main_Volume : ");
 	Settings_texts[1].setString("Sound_Volume : ");
@@ -91,9 +94,40 @@ void menu_intialization()
 		Settings_texts1[i].setOrigin(Settings_texts1[i].getGlobalBounds().width / 2, Settings_texts1[i].getGlobalBounds().height / 2);
 		Pause_text[i].setOrigin(Pause_text[i].getGlobalBounds().width / 2, Pause_text[i].getGlobalBounds().height / 2);
 	}
+	// Recalculate Inc_Dec origins now that strings are set so collision detection is correct
+	for (int i = 0; i < 6; ++i) {
+		Inc_Dec[i].setOrigin(Inc_Dec[i].getGlobalBounds().width / 2, Inc_Dec[i].getGlobalBounds().height / 2);
+	}
 	// Ensure first item in pause menu starts selected (magenta)
 	Pause_text[0].setFillColor(Color::Magenta);
 
+	for (auto& x : How_to_play_texts)
+	{
+		x.setFont(font);
+		x.setCharacterSize(50);
+		x.setFillColor(sf::Color::White);
+		x.setOutlineColor(sf::Color::Black);
+		x.setOutlineThickness(1.5);
+		x.setOrigin(x.getGlobalBounds().width / 2, x.getGlobalBounds().height / 2);
+		x.setPosition(400, 200 + (&x - &How_to_play_texts[0]) * 100);
+	}
+	string how_to_play_instructions[] = {
+		"Hello lolo ^^)",
+		"This is the controls of the game..",
+		"Use \t\t to Move",
+		"If you want to run just hold \t\t while you are moving",
+		"If you will inetract with NPC (side character) you will press\t",
+		"If you want to pause the game you can press \t or \t"
+	};
+	for (int i = 0; i < 6; i++)
+	{
+		How_to_play_texts[i].setString(how_to_play_instructions[i]);
+	}
+	Exit_text.setOrigin(Exit_text.getGlobalBounds().width / 2, Exit_text.getGlobalBounds().height / 2);
+	Exit_text.setFillColor(sf::Color::White);
+	Exit_text.setOutlineColor(sf::Color::Black);
+	Exit_text.setOutlineThickness(1.5);
+	Exit_text.setPosition(120, 40);
 }
 
 void main_menu(Event& event, sf::Vector2i mouse_pos)
@@ -113,6 +147,7 @@ void main_menu(Event& event, sf::Vector2i mouse_pos)
 	}
 	if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left)
 	{
+					last_state = Main_menu;
 		for (auto& x : Main_Menu_texts)
 		{
 			if (x.getGlobalBounds().contains(mouse_pos.x, mouse_pos.y))
@@ -281,7 +316,7 @@ void setting_menu(Event& event, sf::Vector2i mouse_pos)
 
 }
 
-void how_to_play_menu(Event& event, sf::Vector2i mouse_pos)
+void how_to_play_menu(Event& event)
 {
 	if (event.type == Event::KeyPressed && event.key.code == Keyboard::Escape)
 	{
@@ -303,6 +338,7 @@ void pause_menu(Event& event, sf::Vector2i mouse_pos)
 	{
 		state = Playing;
 	}
+
 	if (event.type == Event::MouseMoved)
 		for (auto& x : Pause_text)
 		{
@@ -373,77 +409,20 @@ void pause_menu(Event& event, sf::Vector2i mouse_pos)
 		}
 }
 
-
-void menu_Input(Event& event, sf::Vector2i mouse_pos)
+void How_to_play_menu_update()
 {
-
-	switch (state)
-	{
-	case Main_menu:
-		main_menu(event, mouse_pos);
-		break;
-	case Settings:
-		setting_menu(event, mouse_pos);
-		break;
-	case How_to_play:
-		how_to_play_menu(event, mouse_pos);
-		break;
-	case credits:
-		credits_menu(event, mouse_pos);
-		break;
-	case Paused:
-		pause_menu(event, mouse_pos);
-		break;
-	case Playing:
-		game_input_once();
-		if ((event.type == Event::KeyPressed && event.key.code == Keyboard::Escape) || (event.type == Event::KeyPressed && event.key.code == Keyboard::P))
-		{
-			state = Paused;
-		}
-
-		break;
-
-	}
+	set_Static_animition(W_texture, keyboard_count, W_sprite, 2, W_sprite_timer);
+	set_Static_animition(A_texture, keyboard_count, A_sprite, 2, A_sprite_timer);
+	set_Static_animition(S_texture, keyboard_count, S_sprite, 2, S_sprite_timer);
+	set_Static_animition(D_texture, keyboard_count, D_sprite, 2, D_sprite_timer);
+	set_Static_animition(Shift_texture, keyboard_count, Shift_sprite, 2, Shift_sprite_timer);
+	set_Static_animition(E_texture, keyboard_count, E_sprite, 2, E_sprite_timer);
+	set_Static_animition(Esc_texture, keyboard_count, Esc_sprite, 2, Esc_sprite_timer);
+	set_Static_animition(Esc_texture, keyboard_count, Esc_sprite1, 2, Esc1_sprite_timer);
+	set_Static_animition(P_texture, keyboard_count, P_sprite, 2, P_sprite_timer);
 }
-void menu_Update()
+void menu_update(game_state& state)
 {
-	Settings_texts1[0].setString(to_string(Main_volume));
-	Settings_texts1[1].setString(to_string(sound_temp));
-	Settings_texts1[2].setString(to_string(music_temp));
+	
 }
-void menu_draw()
-{
-	switch (state)
-	{
-	case Main_menu:
-	window.draw(Main_Menu_Background_Sprite);
-	for (const auto& x : Main_Menu_texts)
-	{
-		window.draw(x);
-	}
-		break;
-	case Paused:
-		for (auto& x : Pause_text)
-		{
-			window.draw(x);
-		}
-		break;
-	case Settings:
-		window.draw(Main_Menu_Background_Sprite);
-		for (int i = 0; i < 3; i++)
-		{
-			window.draw(Settings_texts[i]);
-			window.draw(Settings_texts1[i]);
-		}
-		for (auto& x : Inc_Dec)
-			window.draw(x);
-		break;
-	case How_to_play:
-		break;
-	case credits:
-		break;
-	default:
-		break;
-	}
-
-}
+	

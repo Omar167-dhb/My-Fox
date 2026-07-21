@@ -8,6 +8,16 @@ void set_animition(float& timer, int& counter, Sprite& sprite, int idle_framecou
 		sprite.setTextureRect(sf::IntRect(counter * framewidth, yoffset, framewidth, framehight));
 	}
 }
+void set_Static_animition(Texture texture[], int& counter, Sprite& sprite, int framecount, float& timer)
+{
+	timer += Delta_time;
+	if (timer >= 0.17)
+	{
+		timer = 0;
+		counter = (counter + 1) % framecount;
+		sprite.setTexture(texture[counter]);
+	}
+}
 void animation_direction(last_direction& direction, float& timer, int& counter, Sprite& sprite, int framecount, int framewidth, int framehight, int yoffset[]) {
 	switch (direction)
 	{
