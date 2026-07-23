@@ -7,9 +7,9 @@ using namespace std;
 using namespace sf;
 
 #include "Globals.cpp"
+#include "Textures.cpp"
 #include "Animation.cpp"
 #include "menu.cpp"
-#include "Textures.cpp"
 #include "gamelogic.cpp"
 
 
@@ -41,13 +41,30 @@ int main()
 					isfullscreen = true;
 				}
 			}
+			// Handle pause input inside event loop (must check KeyPressed events)
+
 			switch (state)
 			{
 			case Main_menu:
 				main_menu(event, mouse_pos);
 				break;
 			case Playing:
-				game_input_once();
+				// NPC interaction input is called after event loop below
+				if (state == Playing && event.type == sf::Event::KeyPressed && (event.key.code == sf::Keyboard::Escape || event.key.code == sf::Keyboard::P))
+				{
+					state = Paused;
+				}
+				Deer.input_once();
+				Deer1.input_once();
+				Boar.input_once();
+				Black_grouse.input_once();
+				Black_grouse1.input_once();
+				Black_grouse2.input_once();
+				Black_grouse3.input_once();
+				Hare.input_once();
+				Hare1.input_once();
+
+
 				break;
 			case Paused:
 				pause_menu(event, mouse_pos);
@@ -64,9 +81,22 @@ int main()
 			default:
 				break;
 			}
-			
+
 
 		}
+			// Call NPC input_once() AFTER event loop completes (for interaction input)
+			if (state == Playing)
+			{
+				Hare.input_once();
+				Hare1.input_once();
+				Deer.input_once();
+				Deer1.input_once();
+				Boar.input_once();
+				Black_grouse.input_once();
+				Black_grouse1.input_once();
+				Black_grouse2.input_once();
+				Black_grouse3.input_once();
+			}
 		update();
 		window.clear();
 		draw(state);

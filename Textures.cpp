@@ -7,7 +7,8 @@ void intializing_textures()
 	Fox.setTexture(Fox_idle);
 	Fox.setScale(4.0f, 4.0f);
 	Fox.setTextureRect(sf::IntRect(0, 96, 128 / 4, 128));
-	Fox.setPosition(7981, 6156);
+	//Fox.setPosition(7981, 6156);
+	Fox.setPosition(14000,1500);
 	idle_total_width = Fox_idle.getSize().x;
 	idle_total_hight = Fox_idle.getSize().y;
 	walking_total_width = Fox_walking.getSize().x;
@@ -79,5 +80,55 @@ void intializing_textures()
 	Esc_sprite1.setOrigin(Esc_sprite1.getGlobalBounds().width / 2, Esc_sprite1.getGlobalBounds().height / 2);
 	Esc_sprite1.setPosition(1495, 755);
 
-}
+	Hare_texture.loadFromFile("MAIN/My-Fox/Animals/Hare/Hare_Idle_with_shadow.png");
+	Deer_texture.loadFromFile("MAIN/My-Fox/Animals/Deer/Deer_Idle_with_shadow.png");
+	Boar_texture.loadFromFile("MAIN/My-Fox/Animals/Boar/Boar_Idle_with_shadow.png");
+	Black_grouse_texture.loadFromFile("MAIN/My-Fox/Animals/Black_grouse/Black_grouse_Idle_with_shadow.png");
 
+	text_background_texture.loadFromFile("MAIN/My-Fox/GUI/rectangle-and-cricle-shape-solid-and-dot-outline-background-png.png");
+	text_background_sprite.setTexture(text_background_texture);
+
+	Sakura_texture.loadFromFile("MAIN/My-Fox/Trees/sakura-tree-1.png");
+	Camp_fire_1_texture.loadFromFile("MAIN/My-Fox/decor/campfire1.png");
+	Camp_fire_2_texture.loadFromFile("MAIN/My-Fox/decor/campfire2.png");
+	Flag_texture.loadFromFile("MAIN/My-Fox/decor/flag.png");
+	anvel.loadFromFile("MAIN/My-Fox/decor/anvel.png");
+	fence.loadFromFile("MAIN/My-Fox/decor/fence.png");
+	parallel_fence.loadFromFile("MAIN/My-Fox/decor/pixil-frame-0.png");
+	box.loadFromFile("MAIN/My-Fox/decor/box.png");
+	lake.loadFromFile("MAIN/My-Fox/decor/lake.png");
+	well.loadFromFile("MAIN/My-Fox/decor/a well.png");
+	car.loadFromFile("MAIN/My-Fox/decor/decor-1.png");
+	light.loadFromFile("MAIN/My-Fox/decor/light.png");
+	fallen_light.loadFromFile("MAIN/My-Fox/decor/light-fallen.png");
+	broken_light.loadFromFile("MAIN/My-Fox/decor/light-broken.png");
+	House.loadFromFile("MAIN/My-Fox/house/house-1.png");
+	House_1.loadFromFile("MAIN/My-Fox/house/house-2.png");
+	House_2.loadFromFile("MAIN/My-Fox/house/house-3.png");
+	House_3.loadFromFile("MAIN/My-Fox/house/house-4.png");
+	tent.loadFromFile("MAIN/My-Fox/house/tent-1.png");
+	tent_1.loadFromFile("MAIN/My-Fox/house/tent-2.png");
+	Tent_2.loadFromFile("MAIN/My-Fox/house/tent-3.png");
+	Tent_3.loadFromFile("MAIN/My-Fox/house/tent-4.png");
+	tree.loadFromFile("MAIN/My-Fox/trees/tree1.png");
+	tree_1.loadFromFile("MAIN/My-Fox/trees/tree2.png");
+	tree_2.loadFromFile("MAIN/My-Fox/trees/tree3.png");
+	tree_3.loadFromFile("MAIN/My-Fox/trees/tree4.png");
+	broken_tree.loadFromFile("MAIN/My-Fox/trees/Broken_tree1.png");
+	broken_tree_1.loadFromFile("MAIN/My-Fox/trees/Broken_tree2.png");
+	broken_tree_2.loadFromFile("MAIN/My-Fox/trees/Broken_tree3.png");
+	broken_tree_3.loadFromFile("MAIN/My-Fox/trees/Broken_tree4.png");
+	broken_tree_4.loadFromFile("MAIN/My-Fox/trees/Broken_tree5.png");
+	broken_tree_5.loadFromFile("MAIN/My-Fox/trees/Broken_tree6.png");
+	broken_tree_6.loadFromFile("MAIN/My-Fox/trees/Broken_tree7.png");
+	Autumn_tree.loadFromFile("MAIN/My-Fox/trees/Autumn_tree1.png");
+	Autumn_tree_1.loadFromFile("MAIN/My-Fox/trees/Autumn_tree2.png");
+	Autumn_tree_2.loadFromFile("MAIN/My-Fox/trees/Autumn_tree3.png");
+	christmas_tree.loadFromFile("MAIN/My-Fox/trees/christmas_tree1.png");
+	Mossy_tree.loadFromFile("MAIN/My-Fox/trees/Moss_tree1.png");
+	Mossy_tree_1.loadFromFile("MAIN/My-Fox/trees/Moss_tree2.png");
+	Mossy_tree_2.loadFromFile("MAIN/My-Fox/trees/Moss_tree3.png");
+	fruit_tree.loadFromFile("MAIN/My-Fox/trees/fruit_tree1.png");
+	fruit_tree_1.loadFromFile("MAIN/My-Fox/trees/fruit_tree2.png");
+	Burned_tree2.loadFromFile("MAIN/My-Fox/trees/Burned_tree2.png");
+}

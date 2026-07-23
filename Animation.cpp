@@ -41,3 +41,13 @@ void animation_direction(last_direction& direction, float& timer, int& counter, 
 		break;
 	}
 }
+void set_NPC_animition(float& timer, int& counter, Sprite& sprite, int idle_framecount, int framewidth, int framehight, int yoffset)
+{
+	timer += Delta_time;
+	if (timer >= 0.17)
+	{
+		timer = 0;
+		counter = (counter + 1) % idle_framecount;
+		sprite.setTextureRect(sf::IntRect(counter * framewidth, yoffset, framewidth, framehight));
+	}
+}
