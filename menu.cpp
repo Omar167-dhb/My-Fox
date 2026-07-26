@@ -446,3 +446,30 @@ void menu_update(game_state& state)
 	
 }
 	
+void sound_init()
+{
+	water.loadFromFile("MAIN/My-Fox/GUI/Goo2.mp3");
+	walk.loadFromFile("MAIN/My-Fox/GUI/grass.mp3");
+	menu.loadFromFile("MAIN/My-Fox/GUI/menu_sound.mp3");
+	play.loadFromFile("MAIN/My-Fox/GUI/game_sound.mp3");
+	felos.loadFromFile("MAIN/My-Fox/GUI/hane3mel eh.mp3");
+	meme.loadFromFile("MAIN/My-Fox/GUI/3lawey.mp3");
+	getout.loadFromFile("MAIN/My-Fox/GUI/GET OUTmp3.mp3");
+
+	Goo2.setBuffer(water);
+	Goo2.setVolume(sound_temp);
+	grass.setBuffer(walk);
+	grass.setVolume(sound_temp);
+	Main.setBuffer(menu);
+	Main.setVolume(music_temp);
+	Main.setLoop(true);
+	game.setBuffer(play);
+	game.setVolume(music_temp);
+	game.setLoop(true);
+	money.setBuffer(felos);
+	money.setVolume(sound_temp);
+	alawey.setBuffer(meme);
+	alawey.setVolume(sound_temp);
+	out.setBuffer(getout);
+	out.setVolume(sound_temp);
+}

@@ -170,6 +170,10 @@ sf::Sprite text_background_sprite;
 //Texures for rest of the game objects
 Texture anvel, fence, parallel_fence, box, lake, well, car, light, fallen_light, broken_light, House, House_1, House_2, House_3, tent, tent_1, Tent_2, Tent_3;
 Texture tree, tree_1, tree_2, tree_3, broken_tree, broken_tree_1, broken_tree_2, broken_tree_3, broken_tree_4, broken_tree_5, broken_tree_6, Autumn_tree, Autumn_tree_1, Autumn_tree_2, christmas_tree, Mossy_tree, Mossy_tree_1, Mossy_tree_2, fruit_tree, fruit_tree_1, Burned_tree2;
+
+SoundBuffer water, walk, menu, play, felos, meme,getout;
+Sound grass, Goo2, Main, game, money, alawey,out;
+
 // Forward declarations
 void menu_intialization();
 void menu_update(game_state& state);
@@ -182,6 +186,7 @@ void game_update();
 void game_draw();
 void game_intialization();
 void intializing_textures();
+void sound_init();
 void typewriterEffect(sf::RenderWindow& window, const std::string& fullText, sf::Font& font, float delay = 0.05f) {
 	sf::Text text("", font, 30);
 	text.setFillColor(sf::Color::White);
@@ -214,11 +219,13 @@ void intializing()
 {
 	// Set the camera size to be larger than the desktop resolution for a wider view
 	camera.setSize(desktop.width + 1000, desktop.height + 1000);
+	//camera.setSize(20000, 12000);
 	// Create the window in fullscreen mode with the desktop resolution
 	window.create(desktop, " My Fox ^^)", sf::Style::Fullscreen);
 	menu_intialization();
 	intializing_textures();
 	game_intialization();
+	sound_init();
 }
 void update()
 {

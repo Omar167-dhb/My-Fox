@@ -7,8 +7,9 @@ void intializing_textures()
 	Fox.setTexture(Fox_idle);
 	Fox.setScale(4.0f, 4.0f);
 	Fox.setTextureRect(sf::IntRect(0, 96, 128 / 4, 128));
-	//Fox.setPosition(7981, 6156);
-	Fox.setPosition(14000,1500);
+	Fox.setPosition(8781, 7056);
+	//Fox.setPosition(18000, 10000);
+	Fox.setOrigin(Fox.getGlobalBounds().width / 2, Fox.getGlobalBounds().height / 2);
 	idle_total_width = Fox_idle.getSize().x;
 	idle_total_hight = Fox_idle.getSize().y;
 	walking_total_width = Fox_walking.getSize().x;
@@ -16,9 +17,9 @@ void intializing_textures()
 	running_total_width = Fox_running.getSize().x;
 	running_total_hight = Fox_running.getSize().y + 50;
 	// Set up the hitbox for the fox, which is used for collision detection
-	Fox_hitbox.setSize(sf::Vector2f(80, 50));
+	Fox_hitbox.setSize(sf::Vector2f(90, 70));
 	Fox_hitbox.setFillColor(sf::Color::Transparent);
-	Fox_hitbox.setOrigin(Fox_hitbox.getSize().x / 2, Fox_hitbox.getSize().y / 2);
+	//Fox_hitbox.setOrigin(Fox_hitbox.getSize().x / 2, Fox_hitbox.getSize().y / 2);
 	// Load the textures for the main menu and game backgrounds, as well as a secondary background texture
 	Game_Background.loadFromFile("MAIN/My-Fox/GUI/Map.png");
 	Game_Background_Sprite.setTexture(Game_Background);
@@ -128,7 +129,7 @@ void intializing_textures()
 	Mossy_tree.loadFromFile("MAIN/My-Fox/trees/Moss_tree1.png");
 	Mossy_tree_1.loadFromFile("MAIN/My-Fox/trees/Moss_tree2.png");
 	Mossy_tree_2.loadFromFile("MAIN/My-Fox/trees/Moss_tree3.png");
-	fruit_tree.loadFromFile("MAIN/My-Fox/trees/fruit_tree1.png");
-	fruit_tree_1.loadFromFile("MAIN/My-Fox/trees/fruit_tree2.png");
+	fruit_tree.loadFromFile("MAIN/My-Fox/trees/Fruit_tree2.png");
+	fruit_tree_1.loadFromFile("MAIN/My-Fox/trees/Fruit_tree3.png");
 	Burned_tree2.loadFromFile("MAIN/My-Fox/trees/Burned_tree2.png");
 }
