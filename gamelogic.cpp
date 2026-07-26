@@ -1313,7 +1313,7 @@ void game_intialization() {
 
 void game_update() {
 	// Center camera on fox but clamp inside background bounds
-	sf::Vector2u bgSize = Game_Background.getSize();
+	sf::Vector2u bgSize = Vector2u(20000,12000);
 	sf::Vector2f camSize = camera.getSize();
 
 	sf::Vector2f foxCenter(
@@ -1358,7 +1358,7 @@ void game_update() {
 
 		// Clamp fox position to stay inside background so it never leaves the map/view
 		{
-			sf::Vector2u bgSize = Game_Background.getSize();
+			sf::Vector2u bgSize = Vector2u(20000,12000);
 			sf::FloatRect foxBounds = Fox.getGlobalBounds();
 			float halfW = foxBounds.width / 2.f;
 			float halfH = foxBounds.height / 2.f;
@@ -1369,11 +1369,23 @@ void game_update() {
 
 			Fox.setPosition(pos);
 		}
+
 	}
 	else {
 		// No movement keys pressed
 		fox_status = Idle;
 		Fox_speed = Fox_base_speed; // restore base speed
+	}
+
+	// After movement handling, play/stop grass sound based on current fox_status
+	if (fox_status == Walking || fox_status == Running) {
+		if (grass.getStatus() != sf::Sound::Playing) {
+			grass.play();
+		}
+	} else {
+		if (grass.getStatus() == sf::Sound::Playing) {
+			grass.stop();
+		}
 	}
 
 	// If the animation state changed, reset the related timer/counter and set the initial frame
@@ -1634,7 +1646,10 @@ void game_update() {
 }
 void game_draw() {
 	window.setView(camera);
-	window.draw(Game_Background_Sprite);
+	window.draw(Game_Background_Sprite[0]);
+	window.draw(Game_Background_Sprite[1]);
+	window.draw(Game_Background_Sprite[2]);
+	window.draw(Game_Background_Sprite[3]);
 	for (int i = 2; i >= 0; i--)
 	{
 		cars[i].draw();

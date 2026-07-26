@@ -129,8 +129,8 @@ sf::View camera,main_menu_cam(sf::FloatRect(0, 0, window.getSize().x, window.get
 // delta time for frame-independent movement and animation
 double Delta_time;
 // textures and sprites for backgrounds
-sf::Texture Main_Menu_Background, Game_Background;
-sf::Sprite Main_Menu_Background_Sprite, Game_Background_Sprite;
+sf::Texture Main_Menu_Background, Game_Background[4];
+sf::Sprite Main_Menu_Background_Sprite, Game_Background_Sprite[4];
 sf::Texture secondary_background_texture;
 sf::Sprite secondary_background_sprite;
 // dimensions and frame counts for fox animations
@@ -214,7 +214,7 @@ void typewriterEffect(sf::RenderWindow& window, const std::string& fullText, sf:
 		window.display();
 	}
 }
-
+void sound_update();
 void intializing()
 {
 	// Set the camera size to be larger than the desktop resolution for a wider view
@@ -227,6 +227,7 @@ void intializing()
 	game_intialization();
 	sound_init();
 }
+
 void update()
 {
 	switch (state)
@@ -241,6 +242,7 @@ void update()
 		set_Static_animition(Esc_texture, keyboard_count, Esc_sprite, 2, Esc_sprite_timer);
 		break;
 	case Settings:
+		sound_update();
 		set_Static_animition(Esc_texture, keyboard_count, Esc_sprite, 2, Esc_sprite_timer);
 		// Update the settings text to reflect current volume levels
 		Settings_texts1[0].setString(to_string(Main_volume));

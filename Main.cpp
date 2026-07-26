@@ -44,14 +44,14 @@ int main()
 				}
 			}
 			// Handle pause input inside event loop (must check KeyPressed events)
-			if (state == Main_menu  || state == Settings || state == How_to_play || state == credits)
+			if (state == Main_menu || (state == Settings&&last_state==Main_menu) || state == How_to_play || state == credits)
 			{
 				if (Main.getStatus() != sf::Sound::Playing)
 					Main.play();
 			}
 			else Main.stop();
 
-			if (state == Playing || state == Paused)
+			if (state == Playing || state == Paused || (state == Settings && last_state == Paused))
 			{
 				if (game.getStatus() != sf::Sound::Playing)
 					game.play();

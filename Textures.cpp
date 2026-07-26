@@ -21,8 +21,18 @@ void intializing_textures()
 	Fox_hitbox.setFillColor(sf::Color::Transparent);
 	//Fox_hitbox.setOrigin(Fox_hitbox.getSize().x / 2, Fox_hitbox.getSize().y / 2);
 	// Load the textures for the main menu and game backgrounds, as well as a secondary background texture
-	Game_Background.loadFromFile("MAIN/My-Fox/GUI/Map.png");
-	Game_Background_Sprite.setTexture(Game_Background);
+	Game_Background[0].loadFromFile("MAIN/My-Fox/GUI/MAP1.png");
+	Game_Background[1].loadFromFile("MAIN/My-Fox/GUI/MAP2.png");
+	Game_Background[2].loadFromFile("MAIN/My-Fox/GUI/MAP3.png");
+	Game_Background[3].loadFromFile("MAIN/My-Fox/GUI/MAP4.png");
+	Game_Background_Sprite[0].setTexture(Game_Background[0]);
+	Game_Background_Sprite[0].setPosition(0, 0);
+	Game_Background_Sprite[1].setTexture(Game_Background[1]);
+	Game_Background_Sprite[1].setPosition(Game_Background[0].getSize().x, 0);
+	Game_Background_Sprite[2].setTexture(Game_Background[2]);
+	Game_Background_Sprite[2].setPosition(0, Game_Background[0].getSize().y);
+	Game_Background_Sprite[3].setTexture(Game_Background[3]);
+	Game_Background_Sprite[3].setPosition(Game_Background[2].getSize().x, Game_Background[1].getSize().y);
 	secondary_background_texture.loadFromFile("MAIN/My-Fox/GUI/image (1).png");
 	secondary_background_sprite.setTexture(secondary_background_texture);
 

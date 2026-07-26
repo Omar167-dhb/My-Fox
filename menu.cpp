@@ -456,20 +456,28 @@ void sound_init()
 	meme.loadFromFile("MAIN/My-Fox/GUI/3lawey.mp3");
 	getout.loadFromFile("MAIN/My-Fox/GUI/GET OUTmp3.mp3");
 
+	
 	Goo2.setBuffer(water);
-	Goo2.setVolume(sound_temp);
 	grass.setBuffer(walk);
-	grass.setVolume(sound_temp);
 	Main.setBuffer(menu);
-	Main.setVolume(music_temp);
 	Main.setLoop(true);
 	game.setBuffer(play);
-	game.setVolume(music_temp);
 	game.setLoop(true);
+
+	// Loop grass sound so it can be played continuously while the fox moves
+	grass.setLoop(true);
 	money.setBuffer(felos);
-	money.setVolume(sound_temp);
 	alawey.setBuffer(meme);
-	alawey.setVolume(sound_temp);
 	out.setBuffer(getout);
+}
+void sound_update()
+{
+	Goo2.setVolume(Sound_volume);
+	grass.setVolume(Sound_volume);
+	Main.setVolume(Music_volume);
+	game.setVolume(Music_volume);
+	money.setVolume(Sound_volume);
+	alawey.setVolume(Sound_volume);
 	out.setVolume(sound_temp);
+
 }
